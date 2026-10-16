@@ -76,6 +76,7 @@
     .text-link:hover { color:var(--orange); gap:15px; }
     .hero-meta { display:flex; align-items:center; gap:10px; font-size:.74rem; font-weight:700; color:var(--muted); margin-top:29px; }
     .hero-meta .status { display:inline-block; width:7px; height:7px; border-radius:50%; background:#2e8b67; box-shadow:0 0 0 4px rgba(46,139,103,.12); }
+    .hero h1 .line:last-child { font-size:.86em; letter-spacing:-.07em; }
     .hero-art { min-height:clamp(375px,43vw,550px); position:relative; isolation:isolate; }
     .art-canvas { position:absolute; inset:2% 0 2% 2%; background:var(--blue); overflow:hidden; display:flex; align-items:center; justify-content:center; }
     .art-canvas::before { content:""; position:absolute; width:83%; aspect-ratio:1; border:1px solid rgba(250,249,244,.3); border-radius:50%; }
@@ -258,6 +259,7 @@
       .hero { padding:49px 0 42px; }
       .hero-kicker { font-size:.61rem; gap:7px; margin-bottom:21px; }
       h1 { font-size:clamp(3.55rem,15.5vw,5.8rem); letter-spacing:-.09em; line-height:.89; }
+      .hero h1 .line:last-child { font-size:.84em; letter-spacing:-.065em; }
       .hero-foot { grid-template-columns:1fr; gap:19px; margin-top:24px; }
       .hero-summary { font-size:.97rem; line-height:1.75; }
       .hero-actions { display:flex; flex-direction:row; gap:18px; }
@@ -332,7 +334,7 @@
       .hero-actions { gap:14px; }
       .hero-actions .text-link { font-size:.7rem; }
       .hero-art { min-height:345px; }
-      .poster-word { font-size:5.1rem; }
+      .poster-word { font-size:clamp(4.2rem,24vw,5.15rem); }
       .art-label { max-width:130px; font-size:.82rem; }
       .contact h2 { font-size:3.15rem; }
       .dock-copy { font-size:.6rem; }
