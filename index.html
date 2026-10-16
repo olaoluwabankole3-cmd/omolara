@@ -77,18 +77,19 @@
     .hero-meta { display:flex; align-items:center; gap:10px; font-size:.74rem; font-weight:700; color:var(--muted); margin-top:29px; }
     .hero-meta .status { display:inline-block; width:7px; height:7px; border-radius:50%; background:#2e8b67; box-shadow:0 0 0 4px rgba(46,139,103,.12); }
     .hero h1 .line:last-child { font-size:.86em; letter-spacing:-.07em; }
-    .hero-art { min-height:clamp(375px,43vw,550px); position:relative; isolation:isolate; }
-    .art-canvas { position:absolute; inset:2% 0 2% 2%; background:var(--blue); overflow:hidden; display:flex; align-items:center; justify-content:center; }
-    .art-canvas::before { content:""; position:absolute; width:83%; aspect-ratio:1; border:1px solid rgba(250,249,244,.3); border-radius:50%; }
-    .art-canvas::after { content:""; position:absolute; width:66%; aspect-ratio:1; border:1px solid rgba(250,249,244,.24); border-radius:50%; transform:translate(13%,12%); }
-    .poster-word { position:relative; z-index:2; color:var(--paper-bright); font-weight:900; font-size:clamp(5rem,11vw,10rem); line-height:.74; letter-spacing:-.12em; text-align:left; transform:rotate(-7deg); }
-    .poster-word span { display:block; }
-    .poster-word span:nth-child(2) { margin-left:.32em; color:var(--yellow); font-family:Georgia,serif; font-style:italic; font-weight:400; }
-    .poster-index { position:absolute; z-index:3; left:7%; top:7%; color:var(--paper-bright); font-size:.66rem; letter-spacing:.14em; font-weight:800; text-transform:uppercase; writing-mode:vertical-rl; }
-    .poster-stamp { position:absolute; z-index:3; right:7%; bottom:7%; width:88px; height:88px; border-radius:50%; background:var(--orange); color:var(--ink); display:grid; place-items:center; text-align:center; font-size:.62rem; font-weight:900; line-height:1.2; text-transform:uppercase; transform:rotate(12deg); animation:stamp-turn 15s linear infinite; }
-    .poster-star { position:absolute; z-index:3; right:16%; top:13%; color:var(--yellow); font-size:clamp(2rem,4vw,3.6rem); animation:star-drift 5s ease-in-out infinite alternate; }
-    .art-label { position:absolute; z-index:4; left:-1%; bottom:4%; background:var(--yellow); color:var(--ink); padding:12px 15px; max-width:190px; font:italic 1.05rem/1.1 Georgia,serif; box-shadow:4px 4px 0 var(--ink); transform:rotate(-3deg); }
-    .art-caption { display:flex; justify-content:space-between; gap:10px; margin-top:13px; font-size:.65rem; text-transform:uppercase; font-weight:800; letter-spacing:.08em; color:var(--muted); }
+    .hero-art { height:clamp(405px,41vw,550px); min-height:0; position:relative; isolation:isolate; display:grid; grid-template-rows:minmax(0,1fr) auto; }
+    .art-canvas { position:relative; inset:auto; grid-row:1; min-height:0; width:100%; height:100%; background:var(--blue); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+    .art-canvas::before { content:""; position:absolute; width:78%; aspect-ratio:1; border:1px solid rgba(250,249,244,.3); border-radius:50%; }
+    .art-canvas::after { content:""; position:absolute; width:61%; aspect-ratio:1; border:1px solid rgba(250,249,244,.24); border-radius:50%; transform:translate(9%,8%); }
+    .poster-word { position:relative; z-index:2; width:84%; max-width:560px; color:var(--paper-bright); font-weight:900; font-size:clamp(4.2rem,7.7vw,7.7rem); line-height:.83; letter-spacing:-.095em; text-align:left; transform:rotate(-4deg); }
+    .poster-word span { display:block; white-space:nowrap; }
+    .poster-word span:nth-child(2) { margin-left:.12em; color:var(--yellow); font-size:.47em; line-height:.78; font-family:Georgia,serif; font-style:italic; font-weight:400; }
+    .poster-word span:nth-child(3) { font-size:.79em; letter-spacing:-.09em; }
+    .poster-index { position:absolute; z-index:3; left:5%; top:6%; color:var(--paper-bright); font-size:.63rem; letter-spacing:.14em; font-weight:800; text-transform:uppercase; writing-mode:vertical-rl; }
+    .poster-stamp { position:absolute; z-index:3; right:5%; bottom:6%; width:72px; height:72px; border-radius:50%; background:var(--orange); color:var(--ink); display:grid; place-items:center; text-align:center; font-size:.55rem; font-weight:900; line-height:1.2; text-transform:uppercase; transform:rotate(12deg); animation:stamp-turn 15s linear infinite; }
+    .poster-star { position:absolute; z-index:3; right:7%; top:8%; color:var(--yellow); font-size:clamp(1.8rem,3.2vw,2.8rem); animation:star-drift 5s ease-in-out infinite alternate; }
+    .art-label { position:absolute; z-index:4; left:-1%; bottom:34px; background:var(--yellow); color:var(--ink); padding:11px 13px; max-width:164px; font:italic 1rem/1.1 Georgia,serif; box-shadow:4px 4px 0 var(--ink); transform:rotate(-3deg); }
+    .art-caption { grid-row:2; display:flex; justify-content:space-between; gap:10px; margin-top:11px; font-size:.63rem; text-transform:uppercase; font-weight:800; letter-spacing:.08em; color:var(--muted); }
     .ticker { overflow:hidden; border-top:1px solid var(--ink); border-bottom:1px solid var(--ink); background:var(--yellow); color:var(--ink); }
     .ticker-track { display:flex; width:max-content; align-items:center; animation:marquee 28s linear infinite; padding:13px 0; }
     .ticker-track span { display:inline-flex; align-items:center; gap:22px; padding:0 19px; font-size:.73rem; letter-spacing:.14em; font-weight:900; text-transform:uppercase; white-space:nowrap; }
@@ -132,27 +133,30 @@
     .work .section-note { color:rgba(28,28,24,.75); }
     .work .section-top { margin-bottom:34px; }
     .work-showcase { display:grid; grid-template-columns:1fr 1fr; gap:17px; }
-    .project { min-width:0; position:relative; min-height:370px; padding:27px; overflow:hidden; background:var(--paper-bright); display:flex; flex-direction:column; align-items:stretch; border:1px solid rgba(28,28,24,.25); }
+    .project { min-width:0; position:relative; min-height:370px; padding:25px 27px 26px; overflow:hidden; background:var(--paper-bright); display:flex; flex-direction:column; align-items:stretch; border:1px solid rgba(28,28,24,.25); transition:transform .25s,border-color .25s; }
     .project:nth-child(2) { background:var(--blue); color:var(--paper-bright); }
     .project:nth-child(3) { background:var(--ink); color:var(--paper-bright); }
     .project:nth-child(4) { background:var(--yellow); }
+    .project:hover { transform:translateY(-4px); border-color:var(--ink); }
     .project-top { display:flex; align-items:center; justify-content:space-between; gap:12px; font-size:.66rem; text-transform:uppercase; letter-spacing:.12em; font-weight:800; }
     .project-number { font:italic 1.1rem Georgia,serif; }
-    .project-art { position:relative; flex:1; min-height:180px; display:flex; align-items:center; justify-content:center; margin:12px 0 20px; overflow:hidden; }
-    .typographic-art { font-size:clamp(3.1rem,6.4vw,6rem); font-weight:900; line-height:.78; letter-spacing:-.1em; text-transform:uppercase; text-align:center; }
+    .project-art { position:relative; min-height:180px; display:flex; align-items:center; justify-content:center; margin:12px 0 20px; overflow:hidden; }
+    .typographic-art { position:relative;z-index:1;font-size:clamp(3.1rem,6.4vw,6rem);font-weight:900;line-height:.83;letter-spacing:-.1em;text-transform:uppercase;text-align:center; }
     .typographic-art i { font:italic 500 1.12em Georgia,serif; text-transform:none; }
     .project:nth-child(1) .typographic-art { color:var(--blue); transform:rotate(-5deg); }
     .project:nth-child(2) .typographic-art { color:var(--yellow); transform:rotate(4deg); }
     .project:nth-child(3) .typographic-art { color:var(--orange); font-size:clamp(2.6rem,5vw,4.6rem); }
     .project:nth-child(4) .typographic-art { color:var(--ink); transform:rotate(-4deg); }
-    .project-shape { position:absolute; width:150px; height:150px; border:1px solid currentColor; border-radius:50%; opacity:.24; }
-    .project:nth-child(2) .project-shape { width:190px; height:190px; border-radius:35% 65% 51% 49%; transform:rotate(30deg); }
+    .project-shape { position:absolute; width:clamp(110px,14vw,170px); height:clamp(110px,14vw,170px); border:1px solid currentColor; border-radius:50%; opacity:.24; }
+    .project:nth-child(2) .project-shape { width:clamp(130px,17vw,190px); height:clamp(130px,17vw,190px); border-radius:35% 65% 51% 49%; transform:rotate(30deg); }
     .project-bottom { display:flex; justify-content:space-between; gap:18px; align-items:end; border-top:1px solid currentColor; padding-top:16px; }
     .project-bottom h3 { font-size:1.18rem; line-height:1.15; letter-spacing:-.045em; margin:0; }
     .project-bottom p { font-size:.7rem; line-height:1.5; margin:7px 0 0; opacity:.72; }
+    .project-detail { border-top:1px solid currentColor; margin-top:16px; padding-top:15px; font-size:.83rem; line-height:1.72; opacity:.9; }
+    .project-meta { display:flex; flex-wrap:wrap; gap:7px; margin-top:15px; }
+    .project-meta span { font-size:.65rem; font-weight:750; letter-spacing:.04em; border:1px solid currentColor; padding:5px 8px; opacity:.85; }
     .project-open { border:1px solid currentColor; background:transparent; width:40px; height:40px; flex:0 0 40px; border-radius:50%; cursor:pointer; transition:transform .22s,background .22s; }
     .project-open:hover { transform:rotate(45deg); background:var(--paper-bright); color:var(--ink); }
-    .disclaimer { font-size:.72rem; line-height:1.6; color:rgba(28,28,24,.76); margin:15px 0 0; }
     .toolkit { display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(35px,7vw,88px); }
     .toolkit-copy h2 { font-size:clamp(2.3rem,4.7vw,4.2rem); line-height:.99; letter-spacing:-.075em; margin:16px 0 22px; }
     .toolkit-copy p { color:var(--muted); max-width:370px; font-size:.9rem; line-height:1.8; }
@@ -202,7 +206,7 @@
       h1 { font-size:clamp(3.8rem,7.1vw,5.7rem); }
       .hero-foot { grid-template-columns:1fr; align-items:start; gap:17px; }
       .hero-actions { flex-direction:row; flex-wrap:wrap; }
-      .hero-art { min-height:430px; }
+      .hero-art { height:430px; min-height:0; }
       .role { grid-template-columns:45px minmax(160px,.8fr) 1.2fr 26px; gap:20px; }
       .tool-group { grid-template-columns:130px 1fr; }
     }
@@ -221,8 +225,8 @@
       .hero-copy { max-width:720px; }
       h1 { font-size:clamp(4.3rem,12.5vw,7.2rem); }
       .hero-foot { grid-template-columns:minmax(0,1fr) auto; }
-      .hero-art { min-height:460px; max-width:650px; width:100%; margin-inline:auto; }
-      .poster-word { font-size:clamp(6rem,18vw,10rem); }
+      .hero-art { height:460px; min-height:0; max-width:650px; width:100%; margin-inline:auto; }
+      .poster-word { width:82%; font-size:clamp(4.6rem,12vw,7.4rem); }
       .section-top { display:block; }
       .section-note { padding-top:19px; max-width:480px; }
       .about-grid { grid-template-columns:100px 1fr; gap:35px; }
@@ -237,8 +241,12 @@
       .practice-item h3 { margin:9px 0; }
       .practice-item p { max-width:550px; }
       .work-showcase { gap:12px; }
-      .project { padding:20px; min-height:330px; }
+      .project { padding:20px; min-height:0; }
+      .project-art { min-height:154px; margin:10px 0 16px; }
       .typographic-art { font-size:clamp(3rem,8vw,5.2rem); }
+      .project-detail { font-size:.82rem; }
+      .project-meta { gap:6px; }
+      .project-meta span { font-size:.61rem; }
       .toolkit { grid-template-columns:1fr; gap:29px; }
       .toolkit-copy p { max-width:600px; }
       .education-row { grid-template-columns:75px 1fr; gap:18px; }
@@ -265,9 +273,8 @@
       .hero-actions { display:flex; flex-direction:row; gap:18px; }
       .hero-actions .text-link { font-size:.75rem; }
       .hero-meta { font-size:.71rem; margin-top:22px; }
-      .hero-art { min-height:390px; margin-top:4px; }
-      .art-canvas { inset:3% 0 3% 3%; }
-      .poster-word { font-size:clamp(4.5rem,20vw,6.5rem); }
+      .hero-art { height:405px; min-height:0; margin-top:4px; }
+      .poster-word { width:82%; font-size:clamp(3.7rem,17vw,5.7rem); letter-spacing:-.1em; }
       .poster-index { left:6%; top:6%; font-size:.58rem; }
       .poster-stamp { width:70px; height:70px; font-size:.54rem; right:5%; bottom:6%; }
       .poster-star { right:14%; top:14%; font-size:2.3rem; }
@@ -297,7 +304,9 @@
       .practice-item p { font-size:.85rem; }
       .work-showcase { grid-template-columns:1fr; gap:12px; }
       .project { min-height:0; padding:19px; }
-      .project-art { min-height:174px; margin:15px 0 17px; }
+      .project-art { min-height:150px; margin:13px 0 16px; }
+      .project-detail { font-size:.82rem; line-height:1.72; }
+      .project-meta { margin-top:12px; }
       .typographic-art { font-size:clamp(4.5rem,20vw,6.5rem); }
       .project:nth-child(3) .typographic-art { font-size:clamp(3.5rem,15vw,5rem); }
       .project-bottom h3 { font-size:1.13rem; }
@@ -333,8 +342,8 @@
       h1 { font-size:clamp(3.25rem,15vw,3.8rem); }
       .hero-actions { gap:14px; }
       .hero-actions .text-link { font-size:.7rem; }
-      .hero-art { min-height:345px; }
-      .poster-word { font-size:clamp(4.2rem,24vw,5.15rem); }
+      .hero-art { height:365px; min-height:0; }
+      .poster-word { width:84%; font-size:clamp(3.25rem,17.2vw,4.2rem); letter-spacing:-.105em; }
       .art-label { max-width:130px; font-size:.82rem; }
       .contact h2 { font-size:3.15rem; }
       .dock-copy { font-size:.6rem; }
@@ -342,6 +351,7 @@
     }
     @media(hover:none) and (pointer:coarse) {
       .role:hover { padding-left:0; }
+      .project:hover { transform:none; }
       .project-open:hover { transform:none; }
       .text-link:hover { gap:10px; }
     }
@@ -499,32 +509,39 @@
     <section class="section work" id="work">
       <div class="wrap">
         <div class="section-top reveal">
-          <div><p class="eyebrow">04 / Workbench</p><h2>A look at how a brief could take shape.</h2></div>
-          <p class="section-note">These are self-initiated demonstration concepts—not completed client campaigns. They show the structure of work Julius could develop into detailed case studies when real examples are available.</p>
+          <div><p class="eyebrow">04 / Workbench</p><h2>From the first question to a plan people can act on.</h2></div>
+          <p class="section-note">My approach brings the audience, the message and the purpose of the work into focus—then turns that clarity into a practical direction for content, engagement and follow-through.</p>
         </div>
         <div class="work-showcase">
           <article class="project reveal">
-            <div class="project-top"><span>Concept / 01</span><span class="project-number">A</span></div>
+            <div class="project-top"><span>01 / Campaign direction</span><span class="project-number">01</span></div>
             <div class="project-art"><div class="project-shape"></div><div class="typographic-art">A brand<br><i>in motion</i></div></div>
-            <div class="project-bottom"><div><h3>Campaign starter</h3><p>Audience / message / channel / measure</p></div><button class="project-open" data-sample="campaign" aria-label="Open campaign starter concept">↗</button></div>
+            <div class="project-bottom"><div><h3>Campaign planning</h3><p>Objective / audience / message / action</p></div><button class="project-open" data-sample="campaign" aria-label="Explore campaign planning approach">↗</button></div>
+            <div class="project-detail">Start with the purpose behind the campaign and the people it needs to reach. Shape one clear message, decide how each channel supports it, and create a content sequence that moves naturally from attention to understanding and action.</div>
+            <div class="project-meta"><span>Creative brief</span><span>Channel planning</span><span>Success measures</span></div>
           </article>
           <article class="project reveal">
-            <div class="project-top"><span>Concept / 02</span><span class="project-number">B</span></div>
+            <div class="project-top"><span>02 / Audience engagement</span><span class="project-number">02</span></div>
             <div class="project-art"><div class="project-shape"></div><div class="typographic-art">Make<br><i>contact</i></div></div>
-            <div class="project-bottom"><div><h3>Engagement route</h3><p>Listen / invite / participate / learn</p></div><button class="project-open" data-sample="engagement" aria-label="Open engagement route concept">↗</button></div>
+            <div class="project-bottom"><div><h3>Community & engagement</h3><p>Listen / invite / respond / learn</p></div><button class="project-open" data-sample="engagement" aria-label="Explore audience engagement approach">↗</button></div>
+            <div class="project-detail">Design communication around real participation. Identify the audience and the right touchpoints, make the invitation easy to understand, keep the conversation responsive, and use feedback to strengthen the next interaction.</div>
+            <div class="project-meta"><span>Audience touchpoints</span><span>Message planning</span><span>Feedback loops</span></div>
           </article>
           <article class="project reveal">
-            <div class="project-top"><span>Concept / 03</span><span class="project-number">C</span></div>
+            <div class="project-top"><span>03 / Research & insight</span><span class="project-number">03</span></div>
             <div class="project-art"><div class="project-shape"></div><div class="typographic-art">Ask<br>better<br>questions</div></div>
-            <div class="project-bottom"><div><h3>Research to insight</h3><p>Question / evidence / meaning / next step</p></div><button class="project-open" data-sample="research" aria-label="Open research to insight concept">↗</button></div>
+            <div class="project-bottom"><div><h3>Research synthesis</h3><p>Question / evidence / meaning / next step</p></div><button class="project-open" data-sample="research" aria-label="Explore research synthesis approach">↗</button></div>
+            <div class="project-detail">Turn broad questions into manageable research work. Organise the information, separate observations from interpretation, communicate what the evidence does and does not say, and translate useful findings into clear next steps.</div>
+            <div class="project-meta"><span>Research questions</span><span>Insight summary</span><span>Recommendations</span></div>
           </article>
           <article class="project reveal">
-            <div class="project-top"><span>Concept / 04</span><span class="project-number">D</span></div>
+            <div class="project-top"><span>04 / Brand storytelling</span><span class="project-number">04</span></div>
             <div class="project-art"><div class="project-shape"></div><div class="typographic-art">A clear<br><i>signal</i></div></div>
-            <div class="project-bottom"><div><h3>Content direction</h3><p>Point of view / format / rhythm / response</p></div><button class="project-open" data-sample="content" aria-label="Open content direction concept">↗</button></div>
+            <div class="project-bottom"><div><h3>Content & brand voice</h3><p>Point of view / format / rhythm / response</p></div><button class="project-open" data-sample="content" aria-label="Explore brand storytelling approach">↗</button></div>
+            <div class="project-detail">Translate a brand’s value into a recognisable voice across formats. Keep the central message consistent while adapting the story to the audience, platform and moment—so every piece of communication has a clear reason to exist.</div>
+            <div class="project-meta"><span>Message hierarchy</span><span>Content direction</span><span>Brand consistency</span></div>
           </article>
         </div>
-        <p class="disclaimer">Portfolio integrity note: the previews above are illustrative frameworks created for presentation. They are not evidence of past work, campaign results or client engagements.</p>
       </div>
     </section>
 
@@ -593,9 +610,9 @@
 
   <div class="modal" id="conceptModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-panel">
-      <div class="modal-head"><div><p class="eyebrow">A concept, not a case study</p><h3 id="modalTitle">Preview</h3></div><button class="modal-close" id="modalClose" aria-label="Close preview">×</button></div>
+      <div class="modal-head"><div><p class="eyebrow">Inside the approach</p><h3 id="modalTitle">Explore the brief</h3></div><button class="modal-close" id="modalClose" aria-label="Close preview">×</button></div>
       <div class="modal-body" id="modalBody"></div>
-      <div class="modal-note">This is an illustrative starting point created for the portfolio. It is not a past client project or a claim of results.</div>
+      <div class="modal-note">A practical framework for keeping the audience, the message and the next action aligned.</div>
     </div>
   </div>
 
@@ -634,47 +651,50 @@
 
       var concepts = {
         campaign: {
-          title: "Campaign starter",
-          intro: "A useful campaign starts with a shared brief, not a list of posts.",
+          title: "Campaign planning",
+          intro: "A focused campaign brief gives everyone a shared understanding of what the communication needs to do and how the parts fit together.",
           points: [
-            "Objective — decide what should change for the audience.",
-            "Audience — define who the communication is for and what they care about.",
-            "Message — choose one central idea supported by clear proof points.",
-            "Channel — assign each channel a specific role in the journey.",
-            "Measure — agree the signals that will show whether the work is moving in the right direction."
+            "Clarify the objective: define the behaviour, understanding or response the campaign is intended to influence.",
+            "Understand the audience: identify who needs to hear the message, what matters to them and what could prevent them from responding.",
+            "Set the message: agree the central idea, supporting points and tone so the communication remains recognisable across channels.",
+            "Plan the journey: give each channel a clear role and sequence the content from first attention to the desired next step.",
+            "Coordinate execution: identify the materials, approvals, timing and hand-offs needed to keep the work moving.",
+            "Review meaningful signals: choose relevant measures before the campaign begins, then use available evidence and feedback to improve future activity."
           ]
         },
         engagement: {
-          title: "Engagement route",
-          intro: "A compact framework for moving from announcement to actual participation.",
+          title: "Audience and community engagement",
+          intro: "Good engagement should make it easy for people to understand why they are being contacted, what participation looks like and how their response will be handled.",
           points: [
-            "Listen — understand audience needs and existing questions.",
-            "Invite — make the action and the reason to participate clear.",
-            "Participate — reduce friction and provide a clear next step.",
-            "Respond — close the loop by acknowledging questions and contributions.",
-            "Learn — use feedback to improve the next activity."
+            "Map the audience: distinguish the groups involved and the information or invitation each one needs.",
+            "Choose useful touchpoints: match the format, channel and timing to the context rather than sending the same message everywhere.",
+            "Make participation clear: use a direct invitation, a simple next step and accessible language.",
+            "Maintain the conversation: respond consistently, capture recurring questions and make sure follow-ups have an owner.",
+            "Close the feedback loop: acknowledge contributions and use what you hear to refine the next round of communication."
           ]
         },
         research: {
-          title: "Research to insight",
-          intro: "The job of a research summary is to make evidence understandable without overstating what it says.",
+          title: "Research synthesis",
+          intro: "A useful research summary helps people move from a broad question to an accurate, practical understanding of what the available information suggests.",
           points: [
-            "Question — define the issue being investigated.",
-            "Evidence — identify where the information came from and its limitations.",
-            "Observation — describe what the information actually shows.",
-            "Interpretation — explain what the observation could mean.",
-            "Next step — propose a proportionate action or a further question."
+            "Frame the question: define the issue clearly enough to guide the information-gathering process.",
+            "Organise the evidence: track source context, relevant observations and limitations so details are not lost.",
+            "Separate fact from interpretation: distinguish what the information directly shows from what it may imply.",
+            "Identify the signal: group relevant observations into understandable themes without claiming more certainty than the evidence supports.",
+            "Communicate the implication: explain why the finding matters to the audience or decision at hand.",
+            "Recommend a next step: offer an action, a point to validate or a follow-up question proportionate to the available evidence."
           ]
         },
         content: {
-          title: "Content direction",
-          intro: "A simple content direction helps keep a campaign recognisable across formats.",
+          title: "Brand storytelling and content direction",
+          intro: "Strong brand storytelling keeps the central idea consistent while adapting its expression to different audiences, platforms and moments.",
           points: [
-            "Point of view — define what the brand has to say that is worth hearing.",
-            "Format — match the idea to the right expression, such as a story, carousel or short video.",
-            "Rhythm — create a cadence the team can sustain.",
-            "Response — choose what the audience should understand or do after seeing it.",
-            "Review — use qualitative feedback and available analytics to refine future work."
+            "Establish the point of view: define the value, perspective or message the brand needs people to remember.",
+            "Build the message hierarchy: identify the lead message and the supporting information that helps it make sense.",
+            "Select the format: match the idea to an appropriate expression, from a written story to a social post or short video.",
+            "Maintain a recognisable voice: align wording, tone and visual direction across the content sequence.",
+            "Plan the rhythm: use a realistic cadence and clear hand-offs so content is consistent without becoming repetitive.",
+            "Learn from response: consider audience feedback and available channel data when refining future communication."
           ]
         }
       };
