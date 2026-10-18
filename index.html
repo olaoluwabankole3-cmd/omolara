@@ -77,19 +77,15 @@
     .hero-meta { display:flex; align-items:center; gap:10px; font-size:.74rem; font-weight:700; color:var(--muted); margin-top:29px; }
     .hero-meta .status { display:inline-block; width:7px; height:7px; border-radius:50%; background:#2e8b67; box-shadow:0 0 0 4px rgba(46,139,103,.12); }
     .hero h1 .line:last-child { font-size:.86em; letter-spacing:-.07em; }
-    .hero-art { height:clamp(405px,41vw,550px); min-height:0; position:relative; isolation:isolate; display:grid; grid-template-rows:minmax(0,1fr) auto; }
-    .art-canvas { position:relative; inset:auto; grid-row:1; min-height:0; width:100%; height:100%; background:var(--blue); overflow:hidden; display:flex; align-items:center; justify-content:center; }
-    .art-canvas::before { content:""; position:absolute; width:78%; aspect-ratio:1; border:1px solid rgba(250,249,244,.3); border-radius:50%; }
-    .art-canvas::after { content:""; position:absolute; width:61%; aspect-ratio:1; border:1px solid rgba(250,249,244,.24); border-radius:50%; transform:translate(9%,8%); }
-    .poster-word { position:relative; z-index:2; width:84%; max-width:560px; color:var(--paper-bright); font-weight:900; font-size:clamp(4.2rem,7.7vw,7.7rem); line-height:.83; letter-spacing:-.095em; text-align:left; transform:rotate(-4deg); }
-    .poster-word span { display:block; white-space:nowrap; }
-    .poster-word span:nth-child(2) { margin-left:.12em; color:var(--yellow); font-size:.47em; line-height:.78; font-family:Georgia,serif; font-style:italic; font-weight:400; }
-    .poster-word span:nth-child(3) { font-size:.79em; letter-spacing:-.09em; }
-    .poster-index { position:absolute; z-index:3; left:5%; top:6%; color:var(--paper-bright); font-size:.63rem; letter-spacing:.14em; font-weight:800; text-transform:uppercase; writing-mode:vertical-rl; }
-    .poster-stamp { position:absolute; z-index:3; right:5%; bottom:6%; width:72px; height:72px; border-radius:50%; background:var(--orange); color:var(--ink); display:grid; place-items:center; text-align:center; font-size:.55rem; font-weight:900; line-height:1.2; text-transform:uppercase; transform:rotate(12deg); animation:stamp-turn 15s linear infinite; }
-    .poster-star { position:absolute; z-index:3; right:7%; top:8%; color:var(--yellow); font-size:clamp(1.8rem,3.2vw,2.8rem); animation:star-drift 5s ease-in-out infinite alternate; }
-    .art-label { position:absolute; z-index:4; left:-1%; bottom:34px; background:var(--yellow); color:var(--ink); padding:11px 13px; max-width:164px; font:italic 1rem/1.1 Georgia,serif; box-shadow:4px 4px 0 var(--ink); transform:rotate(-3deg); }
-    .art-caption { grid-row:2; display:flex; justify-content:space-between; gap:10px; margin-top:11px; font-size:.63rem; text-transform:uppercase; font-weight:800; letter-spacing:.08em; color:var(--muted); }
+    .hero-art { width:100%; max-width:400px; position:relative; isolation:isolate; display:grid; grid-template-rows:auto auto auto; justify-self:end; }
+    .art-canvas { position:relative; grid-row:1; min-height:0; width:100%; aspect-ratio:2/3; background:#a08e7e; overflow:hidden; border:1px solid rgba(28,28,24,.2); box-shadow:9px 9px 0 var(--blue); }
+    .art-canvas::before { content:""; position:absolute; z-index:3; inset:13px; border:1px solid rgba(250,249,244,.55); pointer-events:none; }
+    .art-canvas::after { content:""; position:absolute; z-index:3; left:13px; right:13px; bottom:13px; height:1px; background:rgba(250,249,244,.45); pointer-events:none; }
+    .portrait-photo { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
+    .portrait-shade { position:absolute; z-index:2; inset:0; pointer-events:none; background:linear-gradient(180deg,rgba(28,28,24,.18),transparent 20%,transparent 80%,rgba(28,28,24,.08)); }
+    .portrait-index { position:absolute; z-index:4; left:5%; top:5%; padding:7px 9px; background:var(--ink); color:var(--paper-bright); font-size:.57rem; letter-spacing:.12em; font-weight:800; text-transform:uppercase; }
+    .art-label { grid-row:2; position:relative; z-index:4; justify-self:start; left:auto; top:auto; bottom:auto; margin:12px 0 0 -7px; background:var(--yellow); color:var(--ink); padding:11px 13px; max-width:164px; font:italic 1rem/1.1 Georgia,serif; box-shadow:4px 4px 0 var(--ink); transform:rotate(-3deg); }
+    .art-caption { grid-row:3; display:flex; justify-content:space-between; gap:10px; margin-top:15px; font-size:.63rem; text-transform:uppercase; font-weight:800; letter-spacing:.08em; color:var(--muted); }
     .ticker { overflow:hidden; border-top:1px solid var(--ink); border-bottom:1px solid var(--ink); background:var(--yellow); color:var(--ink); }
     .ticker-track { display:flex; width:max-content; align-items:center; animation:marquee 28s linear infinite; padding:13px 0; }
     .ticker-track span { display:inline-flex; align-items:center; gap:22px; padding:0 19px; font-size:.73rem; letter-spacing:.14em; font-weight:900; text-transform:uppercase; white-space:nowrap; }
@@ -206,7 +202,7 @@
       h1 { font-size:clamp(3.8rem,7.1vw,5.7rem); }
       .hero-foot { grid-template-columns:1fr; align-items:start; gap:17px; }
       .hero-actions { flex-direction:row; flex-wrap:wrap; }
-      .hero-art { height:430px; min-height:0; }
+      .hero-art { max-width:370px; }
       .role { grid-template-columns:45px minmax(160px,.8fr) 1.2fr 26px; gap:20px; }
       .tool-group { grid-template-columns:130px 1fr; }
     }
@@ -225,8 +221,7 @@
       .hero-copy { max-width:720px; }
       h1 { font-size:clamp(4.3rem,12.5vw,7.2rem); }
       .hero-foot { grid-template-columns:minmax(0,1fr) auto; }
-      .hero-art { height:460px; min-height:0; max-width:650px; width:100%; margin-inline:auto; }
-      .poster-word { width:82%; font-size:clamp(4.6rem,12vw,7.4rem); }
+      .hero-art { max-width:400px; width:100%; margin-inline:auto; justify-self:center; }
       .section-top { display:block; }
       .section-note { padding-top:19px; max-width:480px; }
       .about-grid { grid-template-columns:100px 1fr; gap:35px; }
@@ -273,12 +268,8 @@
       .hero-actions { display:flex; flex-direction:row; gap:18px; }
       .hero-actions .text-link { font-size:.75rem; }
       .hero-meta { font-size:.71rem; margin-top:22px; }
-      .hero-art { height:405px; min-height:0; margin-top:4px; }
-      .poster-word { width:82%; font-size:clamp(3.7rem,17vw,5.7rem); letter-spacing:-.1em; }
-      .poster-index { left:6%; top:6%; font-size:.58rem; }
-      .poster-stamp { width:70px; height:70px; font-size:.54rem; right:5%; bottom:6%; }
-      .poster-star { right:14%; top:14%; font-size:2.3rem; }
-      .art-label { left:0; bottom:0; max-width:148px; font-size:.9rem; padding:10px 12px; }
+      .hero-art { max-width:400px; margin-top:4px; }
+      .art-label { max-width:148px; font-size:.9rem; padding:10px 12px; }
       .ticker-track { padding:11px 0; animation-duration:34s; }
       .ticker-track span { font-size:.63rem; padding-inline:13px; gap:14px; }
       .section { padding:72px 0; }
@@ -342,8 +333,7 @@
       h1 { font-size:clamp(3.25rem,15vw,3.8rem); }
       .hero-actions { gap:14px; }
       .hero-actions .text-link { font-size:.7rem; }
-      .hero-art { height:365px; min-height:0; }
-      .poster-word { width:84%; font-size:clamp(3.25rem,17.2vw,4.2rem); letter-spacing:-.105em; }
+      .hero-art { max-width:100%; }
       .art-label { max-width:130px; font-size:.82rem; }
       .contact h2 { font-size:3.15rem; }
       .dock-copy { font-size:.6rem; }
@@ -403,15 +393,14 @@
           </div>
           <div class="hero-meta"><span class="status" aria-hidden="true"></span> Engagement, brand and research experience <span aria-hidden="true">/</span> <a href="https://www.linkedin.com/in/omolara-julius-260753406/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
         </div>
-        <div class="hero-art" aria-label="Graphic poster with typography and moving shapes">
+        <div class="hero-art">
           <div class="art-canvas">
-            <span class="poster-index">JO / 01 — POINT OF VIEW</span>
-            <div class="poster-word"><span>BRAND</span><span>&amp;</span><span>BEYOND</span></div>
-            <span class="poster-star" aria-hidden="true">✳</span>
-            <div class="poster-stamp">PEOPLE<br>FIRST<br>ALWAYS</div>
+            <img class="portrait-photo" src="assets/omolara-portrait.webp" alt="Julius Omolara smiling with arms crossed in a white blouse and black dress against a warm studio backdrop" width="360" height="540" fetchpriority="high" decoding="async">
+            <span class="portrait-index">JO / 01 — PORTRAIT</span>
+            <span class="portrait-shade" aria-hidden="true"></span>
           </div>
           <div class="art-label">Curiosity is a working tool.</div>
-          <div class="art-caption"><span>Ideas / People / Practice</span><span>Scroll to explore ↓</span></div>
+          <div class="art-caption"><span>Meet Julius Omolara</span><span>Lagos, Nigeria</span></div>
         </div>
       </div>
     </section>
